@@ -97,8 +97,11 @@ function App() {
         throw response
       })
       .then(data => {
-        console.log(data);
+        // console.log(data);
         setAuthToken(data.access_token)
+        setAuthTokenType(data.token_type)
+        setUserId(data.user_id)
+        setUserName(data.username)
       })
       .catch(error => {
         console.log(error);
