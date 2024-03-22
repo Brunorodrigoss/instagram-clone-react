@@ -111,6 +111,13 @@ function App() {
     setOpenSignIn(false);
   }
 
+  const singOut = (event) => {
+    setAuthToken(null)
+    setAuthTokenType(null)
+    setUserId('')
+    setUserName('')
+  }
+
   return (
     <div className='app'>
 
@@ -152,10 +159,15 @@ function App() {
           alt='Instagram'
           />
 
-        <div>
-          <Button onClick={() => setOpenSignIn(true)}>Login</Button>
-          <Button onClick={() => setOpenSignUp(true)}>Sing Up</Button>
-        </div>
+        {authToken ? (
+          <Button onClick={() => singOut()}>Logout</Button>
+        ): (
+          <div>
+            <Button onClick={() => setOpenSignIn(true)}>Login</Button>
+            <Button onClick={() => setOpenSignUp(true)}>Sing Up</Button>
+          </div>
+        )}
+        
       </div>
       <div className='app_posts'>
         {
