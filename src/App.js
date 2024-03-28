@@ -1,7 +1,8 @@
 import { Button, Modal, makeStyles, Input } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import Post from './Post'
+import Post from './Post';
+import ImageUpload from './ImageUpload';
 
 const BASE_URL = 'http://localhost:8000/'
 
@@ -278,6 +279,15 @@ function App() {
           ))
         }
       </div>
+
+      {
+        authToken ? (
+          <ImageUpload
+          />
+        ) : (
+          <h3>You need to login to upload</h3>
+        )
+      }
     </div>
   );
 }
