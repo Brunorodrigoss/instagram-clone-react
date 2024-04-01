@@ -283,6 +283,8 @@ function App() {
       {
         authToken ? (
           <ImageUpload
+            authToken={authToken}
+            authTokenType={authTokenType}
           />
         ) : (
           <h3>You need to login to upload</h3>
