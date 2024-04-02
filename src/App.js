@@ -275,6 +275,8 @@ function App() {
           posts.map(post => (
             <Post
               post = {post}
+              authToken={authToken}
+              authTokenType={authTokenType}
             />
           ))
         }
@@ -285,6 +287,7 @@ function App() {
           <ImageUpload
             authToken={authToken}
             authTokenType={authTokenType}
+            userId={userId}
           />
         ) : (
           <h3>You need to login to upload</h3>
