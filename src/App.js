@@ -52,23 +52,30 @@ function App() {
   }, [])
 
   useEffect(() => {
-    authToken
-      ? window.localStorage.setItem('authToken', authToken)
-      : window.localStorage.removeItem('authToken')
-
-    authTokenType
-      ? window.localStorage.setItem('authTokenType', authTokenType)
-      : window.localStorage.removeItem('authTokenType')
-
-    username
-      ? window.localStorage.setItem('username', username)
-      : window.localStorage.removeItem('username')
-
-    userId
-      ? window.localStorage.setItem('userId', userId)
-      : window.localStorage.removeItem('userId')
-
+    if (authToken) window.localStorage.setItem('authToken', authToken);
+    if (authTokenType) window.localStorage.setItem('authTokenType', authTokenType);
+    if (username) window.localStorage.setItem('username', username);
+    if (userId) window.localStorage.setItem('userId', userId);
   }, [authToken, authTokenType, userId])
+
+  // useEffect(() => {
+  //   authToken
+  //     ? window.localStorage.setItem('authToken', authToken)
+  //     : window.localStorage.removeItem('authToken')
+
+  //   authTokenType
+  //     ? window.localStorage.setItem('authTokenType', authTokenType)
+  //     : window.localStorage.removeItem('authTokenType')
+
+  //   username
+  //     ? window.localStorage.setItem('username', username)
+  //     : window.localStorage.removeItem('username')
+
+  //   userId
+  //     ? window.localStorage.setItem('userId', userId)
+  //     : window.localStorage.removeItem('userId')
+
+  // }, [authToken, authTokenType, userId])
 
   useEffect(() => {
     fetch(BASE_URL + 'post/all')
@@ -141,9 +148,16 @@ function App() {
 
   const singOut = (event) => {
     setAuthToken(null)
+    window.localStorage.removeItem('authToken')
+
     setAuthTokenType(null)
+    window.localStorage.removeItem('authTokenType')
+
     setUserId('')
+    window.localStorage.removeItem('userId')
+
     setUserName('')
+    window.localStorage.removeItem('username')
   }
 
   const singUp = (event) => {
